@@ -1,0 +1,17 @@
+{% extends 'practice_blogs/base.html' %}
+
+{% block content %}
+
+  <p>List of Smartphones:</p>
+    <ul>
+        {% for title in titles %}
+          <li>
+              <a href="{% url 'practice_blogs:title' title.id %}">{{ title }}</a>
+          </li>
+        {% empty %}
+          <li>No models are available right now</li>
+        {% endfor %}
+    </ul>
+    <a href="{% url 'practice_blogs:new_title' %}">Add new model</a>
+
+{% endblock content %}

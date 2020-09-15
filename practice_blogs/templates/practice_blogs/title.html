@@ -1,0 +1,22 @@
+{% extends 'practice_blogs/base.html' %}
+
+{% block content %}
+
+<p>Model: {{ title }}</p>
+<p>Specifications: </p>
+<p>
+    <a href="{% url 'practice_blogs:new_text' title.id %}">add new specifications</a>
+</p>
+<ul>
+    {% for tx in texts %}
+    <li>
+        <p>{{ tx.date_added|date:'M d,Y H:i' }}</p>
+        <p>{{ tx.text|linebreaks }}</p>
+        <p><a href="{% url 'practice_blogs:edit_text' tx.id %}">Edit Specs</a></p>
+    </li>
+    {% empty %}
+    <li>No specs available right now</li>
+    {% endfor %}
+</ul>
+
+{% endblock content %}

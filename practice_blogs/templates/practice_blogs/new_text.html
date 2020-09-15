@@ -1,0 +1,12 @@
+{% extends 'practice_blogs/base.html' %}
+
+{% block content %}
+<p>Model: <a href="{% url 'practice_blogs:title' title.id %}">{{ title }}</a></p>
+<p>Add new specifications: </p>
+<form action="{% url 'practice_blogs:new_text' title.id %}" method='post'>
+    {% csrf_token %}
+    {{ form.as_p }}
+    <button name='submit'>Add specs</button>
+</form>
+
+{% endblock content %}
